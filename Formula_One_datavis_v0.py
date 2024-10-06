@@ -11,13 +11,13 @@ st.title("Formula One Data Analysis: Coming July 2025")
 st.write("Haas F1 Performance and Driver Data Analysis")
 
 df_cr = pd.read_csv('constructor_results.csv')
-st.dataframe(df_cr)
+
 df_cs = pd.read_csv('constructor_standings.csv')
-st.dataframe(df_cs)                   
+#st.dataframe(df_cs)                   
 df_c = pd.read_csv('constructors.csv')
-st.dataframe(df_c)
+#st.dataframe(df_c)
 race_data = pd.read_csv('races.csv')
-st.dataframe(race_data)
+#st.dataframe(race_data)
 Haas_id = df_c[df_c['constructorRef'] == 'haas']['constructorId'].values[0]
 Haas_id
 
@@ -29,10 +29,10 @@ df_cs_haas
 
 Haas_construct = pd.merge(df_cr_haas, df_cs_haas, on=['raceId', 'constructorId'], suffixes=('_results', '_standings'))
 
-st.dataframe(Haas_construct)
+#st.dataframe(Haas_construct)
 Haas_construct.head()
 Haas_data = pd.merge(Haas_construct, race_data, on=['raceId'])
-st.dataframe(Haas_data)
+#st.dataframe(Haas_data)
 
 correlation_matrix = Haas_data[['points_results', 'points_standings', 'position', 'wins']].corr()
 correlation_matrix

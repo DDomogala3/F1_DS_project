@@ -41,7 +41,14 @@ st.write(sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm'))
 st.write(plt.title('Correlation Matrix of Performance Metrics for Haas'))
 st.pyplot(plt)
 
+haas_standings_with_names = pd.merge(haas_results, haas_drivers, on='driverId', how='left')
 
+#mclaren_standings_with_names = mclaren_standings_with_names[['driverId','forename', 'surname','points','position']]
+
+haas_standings_with_names.rename(columns={'forename': 'First Name', 'surname': 'Last Name'}, inplace=True)
+haas_standings_with_names['position'] = pd.to_numeric(haas_standings_with_names['position'], errors='coerce')
+
+haas_standings_with_names.describe()
 driver_performance = haas_standings_with_names.groupby(['Last Name'])[['points', 'position']].mean().reset_index()
 fig, ax1 = plt.subplots(figsize=(10,6))
 

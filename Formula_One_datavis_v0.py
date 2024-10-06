@@ -31,4 +31,4 @@ correlation_matrix = Haas_data[['points_results', 'points_standings', 'position'
 plt.figure(figsize=(8, 6))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 plt.title('Correlation Matrix of Performance Metrics for Haas')
-str.write(plt.show())
+st.write(plt.show())

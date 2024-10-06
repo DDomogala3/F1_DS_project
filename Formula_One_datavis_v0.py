@@ -31,7 +31,7 @@ Haas_construct = pd.merge(df_cr_haas, df_cs_haas, on=['raceId', 'constructorId']
 
 st.dataframe(Haas_construct)
 st.write(Haas_construct.head())
-Haas_data = pd.merge(Haas_construct, race_data, on=['raceId']
+Haas_data = pd.merge(Haas_construct, race_data, on=['raceId'])
 st.dataframe(Haas_data)
 
 correlation_matrix = Haas_data[['points_results', 'points_standings', 'position', 'wins']].corr()

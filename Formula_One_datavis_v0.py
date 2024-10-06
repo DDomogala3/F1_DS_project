@@ -10,7 +10,7 @@ import seaborn as sns
 st.write("Formula One Data Analysis:Coming July 2025")
 
 
-df_cr = pd.read_csv('constructor_results.csv'
+df_cr = pd.read_csv('constructor_results.csv')
 st.dataframe(df_cr)
 df_cs = pd.read_csv('constructor_standings.csv')
 st.dataframe(df_cs)                   

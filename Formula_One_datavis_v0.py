@@ -40,3 +40,27 @@ st.write(plt.figure(figsize=(8, 6)))
 st.write(sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm'))
 st.write(plt.title('Correlation Matrix of Performance Metrics for Haas'))
 st.pyplot(plt)
+
+
+driver_performance = haas_standings_with_names.groupby(['Last Name'])[['points', 'position']].mean().reset_index()
+fig, ax1 = plt.subplots(figsize=(10,6))
+
+sns.barplot(data=driver_performance, x='Last Name', y='points', ax=ax1, color='b', alpha=0.6, label='Average Points')
+ax1.set_xlabel('Driver')
+ax1.set_ylabel('Average Points', color='b')
+ax1.tick_params(axis='y', labelcolor='b')
+
+ax1.set_xticks(range(len(driver_performance)))
+ax1.set_xticklabels(driver_performance['Last Name'], rotation=90)
+
+ax2 = ax1.twinx()
+sns.lineplot(data=driver_performance, x='Last Name', y='position', ax=ax2, color='r', marker='o', label='Average Position')
+
+ax2.set_ylabel('Average Position', color='r')
+ax2.tick_params(axis='y', labelcolor='r')
+
+plt.title('Average Points and Positions by Driver')
+ax1.legend(loc='upper left')
+ax2.legend(loc='upper right')
+
+st.pyplot(plt)

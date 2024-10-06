@@ -40,6 +40,8 @@ st.write(plt.figure(figsize=(8, 6)))
 st.write(sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm'))
 st.write(plt.title('Correlation Matrix of Performance Metrics for Haas'))
 st.pyplot(plt)
+df_driv = pd.read_csv('drivers.csv')
+df_ds = pd.read_csv('driver_standings.csv')
 df_results = pd.read_csv('results.csv')
 
 

@@ -40,10 +40,19 @@ st.write(plt.figure(figsize=(8, 6)))
 st.write(sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm'))
 st.write(plt.title('Correlation Matrix of Performance Metrics for Haas'))
 st.pyplot(plt)
+df_results = pd.read_csv('results.csv')
 
+
+haas_results = df_results[df_results['constructorId'] == Haas_id]
+
+haas_driver_ids = haas_results['driverId'].unique()
+
+haas_drivers = df_driv[df_driv['driverId'].isin(haas_driver_ids)]
+haas_ds = df_ds[df_ds['driverId'].isin(haas_driver_ids)]
 haas_standings_with_names = pd.merge(haas_results, haas_drivers, on='driverId', how='left')
 
 #mclaren_standings_with_names = mclaren_standings_with_names[['driverId','forename', 'surname','points','position']]
+
 
 haas_standings_with_names.rename(columns={'forename': 'First Name', 'surname': 'Last Name'}, inplace=True)
 haas_standings_with_names['position'] = pd.to_numeric(haas_standings_with_names['position'], errors='coerce')

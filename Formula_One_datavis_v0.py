@@ -7,7 +7,7 @@ import seaborn as sns
 #Formual One Streamlit script
 
 
-st.title("Formula One Data Analysis:Coming July 2025")
+st.title("Formula One Data Analysis: Coming July 2025")
 st.write("Haas F1 Performance and Driver Data Analysis")
 
 df_cr = pd.read_csv('constructor_results.csv')
@@ -30,7 +30,7 @@ df_cs_haas
 Haas_construct = pd.merge(df_cr_haas, df_cs_haas, on=['raceId', 'constructorId'], suffixes=('_results', '_standings'))
 
 st.dataframe(Haas_construct)
-(Haas_construct.head()
+Haas_construct.head()
 Haas_data = pd.merge(Haas_construct, race_data, on=['raceId'])
 st.dataframe(Haas_data)
 

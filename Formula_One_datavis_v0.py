@@ -118,6 +118,6 @@ williams_drivers = df_driv[df_driv['driverId'].isin(williams_driver_ids)]
 williams_ds = df_ds[df_ds['driverId'].isin(williams_driver_ids)]
 
 williams_drivers.columns
-williams_drivers
+st.write(williams_drivers)
 
 

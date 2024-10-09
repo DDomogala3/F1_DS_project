@@ -108,6 +108,6 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 plt.title('Correlation Matrix of Performance Metrics for williams')
 st.pyplot(plt)
 
-str.write(head(df_driv)))
+str.write(df_driv)
 
 

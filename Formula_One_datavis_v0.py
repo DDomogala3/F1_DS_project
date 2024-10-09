@@ -108,6 +108,16 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
 plt.title('Correlation Matrix of Performance Metrics for williams')
 st.pyplot(plt)
 
-str.write(df_driv)
+st.write("Williams has had their ups and downs, but they have a storied history in Formula One")
+
+williams_results = df_results[df_results['constructorId'] == williams_id]
+
+williams_driver_ids = williams_results['driverId'].unique()
+
+williams_drivers = df_driv[df_driv['driverId'].isin(williams_driver_ids)]
+williams_ds = df_ds[df_ds['driverId'].isin(williams_driver_ids)]
+
+williams_drivers.columns
+williams_drivers
 
 

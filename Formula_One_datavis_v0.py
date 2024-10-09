@@ -40,6 +40,8 @@ st.write(plt.figure(figsize=(8, 6)))
 st.write(sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm'))
 st.write(plt.title('Correlation Matrix of Performance Metrics for Haas'))
 st.pyplot(plt)
+
+
 df_driv = pd.read_csv('drivers.csv')
 df_ds = pd.read_csv('driver_standings.csv')
 df_results = pd.read_csv('results.csv')
@@ -82,3 +84,30 @@ ax1.legend(loc='upper left')
 ax2.legend(loc='upper right')
 
 st.pyplot(plt)
+
+st.write("More experienced and longer tenured drivers, Grosjean, Hulkenberg, and Magnussen have delivered the most points for Haas. They also started on average at a lower position.")
+
+st.divider()
+
+st.header("Williams Racing Data Analysis")
+
+williams_id = df_c[df_c['constructorRef'] == 'williams']['constructorId'].values[0]
+
+df_cr_williams = df_cr[df_cr['constructorId'] == williams_id]
+df_cs_williams = df_cs[df_cs['constructorId'] == williams_id]
+
+williams_construct = pd.merge(df_cr_williams, df_cs_williams, on=['raceId', 'constructorId'], suffixes=('_results', '_standings'))
+williams_construct.head()
+williams_data = pd.merge(williams_construct, race_data, on=['raceId'])
+williams_data.head()
+
+correlation_matrix = williams_data[['points_results', 'points_standings', 'position', 'wins']].corr()
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+plt.title('Correlation Matrix of Performance Metrics for williams')
+st.pyplot(plt)
+
+head(df_driv)
+
+

@@ -117,7 +117,37 @@ williams_driver_ids = williams_results['driverId'].unique()
 williams_drivers = df_driv[df_driv['driverId'].isin(williams_driver_ids)]
 williams_ds = df_ds[df_ds['driverId'].isin(williams_driver_ids)]
 
-williams_drivers.columns
+
 st.write(williams_drivers)
 
 
+williams_standings_with_names = pd.merge(williams_results, williams_drivers, on='driverId', how='left')
+
+#mclaren_standings_with_names = mclaren_standings_with_names[['driverId','forename', 'surname','points','position']]
+
+williams_standings_with_names.rename(columns={'forename': 'First Name', 'surname': 'Last Name'}, inplace=True)
+williams_standings_with_names['position'] = pd.to_numeric(williams_standings_with_names['position'], errors='coerce')
+
+williams_driver_performance = williams_standings_with_names.groupby(['Last Name'])[['points', 'position']].mean().reset_index()
+
+fig, ax1 = plt.subplots(figsize=(10,6))
+
+sns.barplot(data=williams_driver_performance, x='Last Name', y='points', ax=ax1, color='b', alpha=0.6, label='Average Points')
+ax1.set_xlabel('Driver')
+ax1.set_ylabel('Average Points', color='b')
+ax1.tick_params(axis='y', labelcolor='b')
+
+ax1.set_xticks(range(len(williams_driver_performance)))
+ax1.set_xticklabels(williams_driver_performance['Last Name'], rotation=90)
+
+ax2 = ax1.twinx()
+sns.lineplot(data=williams_driver_performance, x='Last Name', y='position', ax=ax2, color='r', marker='o', label='Average Position')
+
+ax2.set_ylabel('Average Position', color='r')
+ax2.tick_params(axis='y', labelcolor='r')
+
+plt.title('Average Points and Positions by Williams Driver')
+ax1.legend(loc='upper left')
+ax2.legend(loc='upper right')
+
+st.pyplot(plt)

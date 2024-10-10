@@ -8,7 +8,7 @@ import seaborn as sns
 
 
 st.title("Formula One Data Analysis: Coming July 2025")
-st.write("Haas F1 Performance and Driver Data Analysis")
+st.header("Haas F1 Performance and Driver Data Analysis")
 
 df_cr = pd.read_csv('constructor_results.csv')
 
@@ -23,9 +23,9 @@ Haas_id = df_c[df_c['constructorRef'] == 'haas']['constructorId'].values[0]
 
 
 df_cr_haas = df_cr[df_cr['constructorId'] == Haas_id]
-df_cr_haas
+#df_cr_haas
 df_cs_haas = df_cs[df_cs['constructorId'] == Haas_id]
-df_cs_haas
+#df_cs_haas
 
 Haas_construct = pd.merge(df_cr_haas, df_cs_haas, on=['raceId', 'constructorId'], suffixes=('_results', '_standings'))
 

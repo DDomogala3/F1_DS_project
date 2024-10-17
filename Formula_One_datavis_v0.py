@@ -23,14 +23,18 @@ Haas_id = df_c[df_c['constructorRef'] == 'haas']['constructorId'].values[0]
 #Haas_id
 team_input = team_input.lower()
 team_id = df_c[df_c['constructorRef'] == team_input]['constructorId'].values[0]
-st.write(team_id)
+st.write("Your Team ID is %d" % team_id)
+
+df_cr_team_input = df_cr[df_cr['constructorId'] == team_input]
 df_cr_haas = df_cr[df_cr['constructorId'] == Haas_id]
 #df_cr_haas
 df_cs_haas = df_cs[df_cs['constructorId'] == Haas_id]
 #df_cs_haas
+df_cs_team_input = df_cs[df_cs['constructorId'] == team_input]
 
 Haas_construct = pd.merge(df_cr_haas, df_cs_haas, on=['raceId', 'constructorId'], suffixes=('_results', '_standings'))
-
+team_input_construct = pd.merge(df_cr_team_input,df_cs_team_input, on=['raceId', 'constructorId'], suffixes=('_results', '_standings'))
+st.dataframe(team_input_construct)
 #st.dataframe(Haas_construct)
 #Haas_construct.head()
 Haas_data = pd.merge(Haas_construct, race_data, on=['raceId'])

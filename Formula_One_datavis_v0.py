@@ -38,6 +38,13 @@ st.dataframe(team_input_construct)
 #st.dataframe(Haas_construct)
 #Haas_construct.head()
 Haas_data = pd.merge(Haas_construct, race_data, on=['raceId'])
+team_data = pd.merge(team_input_construct, race_data, on=['raceId'])
+
+team_input_correlation_matrix = team_data[['points_results', 'points_standings', 'position', 'wins']].corr()
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+st.write(plt.title('Correlation Matrix of Performance Metrics for %s'% team_input))
+st.pyplot(plt)
 #st.dataframe(Haas_data)
 
 correlation_matrix = Haas_data[['points_results', 'points_standings', 'position', 'wins']].corr()

@@ -87,7 +87,7 @@ ax1.set_ylabel('Average Points', color='b')
 ax1.tick_params(axis='y', labelcolor='b')
 
 ax1.set_xticks(range(len(team_input_driver_performance)))
-ax1.set_xticklabels(driver_performance['Last Name'], rotation=90)
+ax1.set_xticklabels(team_input_driver_performance['Last Name'], rotation=90)
 
 ax2 = ax1.twinx()
 sns.lineplot(data=team_input_driver_performance, x='Last Name', y='position', ax=ax2, color='r', marker='o', label='Average Position')

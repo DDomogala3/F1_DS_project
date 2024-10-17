@@ -12,6 +12,7 @@ st.header("Performance and Driver Data Analysis of Your Choice")
 
 df_cr = pd.read_csv('constructor_results.csv')
 team_input = st.text_input("What team do you want to analyze?:")
+st.write("Please note team names with two words have a '_' in the middle e.g. 'red_bull'")
 st.write("Let's look at %s team data" % team_input)
 df_cs = pd.read_csv('constructor_standings.csv')
 #st.dataframe(df_cs)                   
@@ -45,49 +46,51 @@ plt.figure(figsize=(8, 6))
 sns.heatmap(team_input_correlation_matrix, annot=True, cmap='coolwarm')
 st.write(plt.title('Correlation Matrix of Performance Metrics for %s'% team_input))
 st.pyplot(plt)
-#st.dataframe(Haas_data)
 
-#correlation_matrix = Haas_data[['points_results', 'points_standings', 'position', 'wins']].corr()
-
-#plt.figure(figsize=(8, 6))
-#sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
-#st.write(plt.title('Correlation Matrix of Performance Metrics for Haas'))
-#st.pyplot(plt)
 
 
 df_driv = pd.read_csv('drivers.csv')
 df_ds = pd.read_csv('driver_standings.csv')
 df_results = pd.read_csv('results.csv')
 
-
+team_input_results = df_results[df_results['constructorId'] == team_id]
 haas_results = df_results[df_results['constructorId'] == Haas_id]
 
 haas_driver_ids = haas_results['driverId'].unique()
+team_driver_ids = team_input_results['driverId'].unique()
 
 haas_drivers = df_driv[df_driv['driverId'].isin(haas_driver_ids)]
+team_input_drivers = df_driv[df_driv['driverId'].isin(team_driver_ids)]
+
 haas_ds = df_ds[df_ds['driverId'].isin(haas_driver_ids)]
+team_input_ds = df_ds[df_ds['driverId'].isin(team_driver_ids)]
+team_input_standings_with_names = pd.merge(team_input_results, team_input_drivers, on='driverId',how='left')
 haas_standings_with_names = pd.merge(haas_results, haas_drivers, on='driverId', how='left')
 
 #mclaren_standings_with_names = mclaren_standings_with_names[['driverId','forename', 'surname','points','position']]
 
+team_input_standings_with_names.rename(columns=('forename':'First Name','surname':''Last Name'}, inplace=True)
 
 haas_standings_with_names.rename(columns={'forename': 'First Name', 'surname': 'Last Name'}, inplace=True)
 haas_standings_with_names['position'] = pd.to_numeric(haas_standings_with_names['position'], errors='coerce')
+team_input_standings_with_names['position'] = pd.to_numeric(team_input_standings_with_names['position'], errors='coerce')
 
 #haas_standings_with_names.describe()
 driver_performance = haas_standings_with_names.groupby(['Last Name'])[['points', 'position']].mean().reset_index()
+team_input_driver_performance = team_input_standings_with_names.groupby(['Last Name'])(['points','position']).mean().reset_index()
+
 fig, ax1 = plt.subplots(figsize=(10,6))
 
-sns.barplot(data=driver_performance, x='Last Name', y='points', ax=ax1, color='b', alpha=0.6, label='Average Points')
+sns.barplot(data=team_input_driver_performance, x='Last Name', y='points', ax=ax1, color='b', alpha=0.6, label='Average Points')
 ax1.set_xlabel('Driver')
 ax1.set_ylabel('Average Points', color='b')
 ax1.tick_params(axis='y', labelcolor='b')
 
-ax1.set_xticks(range(len(driver_performance)))
+ax1.set_xticks(range(len(team_input_driver_performance)))
 ax1.set_xticklabels(driver_performance['Last Name'], rotation=90)
 
 ax2 = ax1.twinx()
-sns.lineplot(data=driver_performance, x='Last Name', y='position', ax=ax2, color='r', marker='o', label='Average Position')
+sns.lineplot(data=team_input_driver_performance, x='Last Name', y='position', ax=ax2, color='r', marker='o', label='Average Position')
 
 ax2.set_ylabel('Average Position', color='r')
 ax2.tick_params(axis='y', labelcolor='r')
@@ -98,7 +101,7 @@ ax2.legend(loc='upper right')
 
 st.pyplot(plt)
 
-st.write("More experienced and longer tenured drivers, Grosjean, Hulkenberg, and Magnussen have delivered the most points for Haas. They also started on average at a lower position.")
+
 
 st.divider()
 

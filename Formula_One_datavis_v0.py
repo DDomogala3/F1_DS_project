@@ -21,8 +21,9 @@ race_data = pd.read_csv('races.csv')
 #st.dataframe(race_data)
 Haas_id = df_c[df_c['constructorRef'] == 'haas']['constructorId'].values[0]
 #Haas_id
-
-
+team_input = team_input.lower()
+team_id = df_c[df_c['constructorRef'] == team_input]['constructorId'].values[0]
+st.write(team_id)
 df_cr_haas = df_cr[df_cr['constructorId'] == Haas_id]
 #df_cr_haas
 df_cs_haas = df_cs[df_cs['constructorId'] == Haas_id]

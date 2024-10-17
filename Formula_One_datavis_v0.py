@@ -8,7 +8,7 @@ import seaborn as sns
 
 
 st.title("Formula One Data Analysis: Coming July 2025")
-st.header("Haas F1 Performance and Driver Data Analysis")
+st.header("Performance and Driver Data Analysis of Your Choice")
 
 df_cr = pd.read_csv('constructor_results.csv')
 team_input = st.text_input("What team do you want to analyze?:")

@@ -77,7 +77,7 @@ team_input_standings_with_names['position'] = pd.to_numeric(team_input_standings
 
 #haas_standings_with_names.describe()
 driver_performance = haas_standings_with_names.groupby(['Last Name'])[['points', 'position']].mean().reset_index()
-team_input_driver_performance = team_input_standings_with_names.groupby(['Last Name'])(['points','position']).mean().reset_index()
+team_input_driver_performance = team_input_standings_with_names.groupby(['Last Name'])[['points', 'position']].mean().reset_index()
 
 fig, ax1 = plt.subplots(figsize=(10,6))
 

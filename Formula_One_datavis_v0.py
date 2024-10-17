@@ -69,7 +69,7 @@ haas_standings_with_names = pd.merge(haas_results, haas_drivers, on='driverId', 
 
 #mclaren_standings_with_names = mclaren_standings_with_names[['driverId','forename', 'surname','points','position']]
 
-team_input_standings_with_names.rename(columns=('[forename':'First Name','surname':''Last Name'}, inplace=True)
+team_input_standings_with_names.rename(columns=({'forename':'First Name','surname':''Last Name'}, inplace=True)
 
 haas_standings_with_names.rename(columns={'forename': 'First Name', 'surname': 'Last Name'}, inplace=True)
 haas_standings_with_names['position'] = pd.to_numeric(haas_standings_with_names['position'], errors='coerce')

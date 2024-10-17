@@ -11,7 +11,7 @@ st.title("Formula One Data Analysis: Coming July 2025")
 st.header("Haas F1 Performance and Driver Data Analysis")
 
 df_cr = pd.read_csv('constructor_results.csv')
-
+st.text_input("What team do you want to analyze?:")
 df_cs = pd.read_csv('constructor_standings.csv')
 #st.dataframe(df_cs)                   
 df_c = pd.read_csv('constructors.csv')

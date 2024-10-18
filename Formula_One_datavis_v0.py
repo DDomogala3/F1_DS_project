@@ -12,11 +12,11 @@ st.header("Performance and Driver Data Analysis of Your Choice")
 
 df_cr = pd.read_csv('constructor_results.csv')
 #team_input = st.text_input("What team do you want to analyze?:")
-try :
-     team_input = st.text_input("What team do you want to analyze?:")
-except IndexError:
-     st.write("It looks like the team name that you entered was incorrect or does not exist.")
 
+try:
+    team_input = st.text_input("What team do you want to analyze?:"
+except IndexError:
+    print("Index out of range!")
 
 
 st.write("Please note team names with two words have a '_' in the middle e.g. 'red_bull'")

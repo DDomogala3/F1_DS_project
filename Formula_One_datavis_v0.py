@@ -34,7 +34,7 @@ Haas_id = df_c[df_c['constructorRef'] == 'haas']['constructorId'].values[0]
 #Haas_id
 team_input = team_input.lower()
 try:
-    df_c[df_c['constructorRef'] == team_input]['constructorId'].values[0]
+    team_id = df_c[df_c['constructorRef'] == team_input]['constructorId'].values[0]
 except IndexError:
     print("Index out of range!")
 team_id = df_c[df_c['constructorRef'] == team_input]['constructorId'].values[0]

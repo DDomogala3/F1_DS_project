@@ -11,11 +11,14 @@ st.title("Formula One Data Analysis: Coming July 2025")
 st.header("Performance and Driver Data Analysis of Your Choice")
 
 df_cr = pd.read_csv('constructor_results.csv')
-team_input = st.text_input("What team do you want to analyze?:")
-if team_input == IndexError:
-  st.write("It looks like the team name that you entered was incorrect or does not exist.")
-else:
-  pass
+#team_input = st.text_input("What team do you want to analyze?:")
+try :
+     team_input = st.text_input("What team do you want to analyze?:")
+ except IndexError:
+   st.write("It looks like the team name that you entered was incorrect or does not exist.")
+
+
+
 st.write("Please note team names with two words have a '_' in the middle e.g. 'red_bull'")
 st.write("Let's look at %s team data" % team_input)
 df_cs = pd.read_csv('constructor_standings.csv')

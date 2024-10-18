@@ -17,7 +17,10 @@ try:
     team_input = st.text_input("What team do you want to analyze:?")
 except IndexError:
     print("Index out of range!")
-
+if IndexError:
+    print("Team name is not entered!")
+else:
+    pass
 
 st.write("Please note team names with two words have a '_' in the middle e.g. 'red_bull'")
 st.write("Let's look at %s team data" % team_input)

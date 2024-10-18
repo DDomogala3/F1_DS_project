@@ -14,8 +14,8 @@ df_cr = pd.read_csv('constructor_results.csv')
 #team_input = st.text_input("What team do you want to analyze?:")
 try :
      team_input = st.text_input("What team do you want to analyze?:")
- except IndexError:
-   st.write("It looks like the team name that you entered was incorrect or does not exist.")
+except IndexError:
+     st.write("It looks like the team name that you entered was incorrect or does not exist.")
 
 
 

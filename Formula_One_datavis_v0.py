@@ -14,7 +14,7 @@ df_cr = pd.read_csv('constructor_results.csv')
 #team_input = st.text_input("What team do you want to analyze?:")
 
 try:
-    team_input = st.text_input("What team do you want to analyze?):"
+    team_input = st.text_input("What team do you want to analyze?"):
 except IndexError:
     print("Index out of range!")
 

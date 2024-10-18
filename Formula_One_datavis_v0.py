@@ -39,7 +39,7 @@ try:
    
     
 except IndexError:
-    print("Index out of range!")
+    st.write("Index out of range!")
 team_id = df_c[df_c['constructorRef'] == team_input]['constructorId'].values[0]
 
 st.write("Your Team ID is %d" % team_id)

@@ -9,7 +9,7 @@ import seaborn as sns
 
 st.title("Formula One Data Analysis: Coming July 2025")
 st.header("Performance and Driver Data Analysis of Your Choice")
-
+st.write("Code comes from this Kaggle site. https://www.kaggle.com/code/mansipanchal24/eda-on-f1-data-in-progress")
 df_cr = pd.read_csv('constructor_results.csv')
 #team_input = st.text_input("What team do you want to analyze?:")
 

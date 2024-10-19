@@ -134,7 +134,7 @@ avg_positon_per_year = result_by_year(team_data,'year', 'points_results')
 
 plt.figure(figsize=(12, 6))
 sns.histplot(team_data['points_results'], bins=20, kde=True)
-plt.title('Distribution of %s in Races' % team_input)
+plt.title('Distribution of %s Points in Races' % team_input)
 plt.xlabel('Points')
 plt.ylabel('Frequency')
 st.pyplot(plt)

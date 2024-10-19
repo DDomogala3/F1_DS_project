@@ -131,14 +131,12 @@ def result_by_year(data, year, metric):
 
 
 avg_positon_per_year = result_by_year(team_data,'year', 'points_results')
-st.write(avg_positon_per_year)
+
 plt.figure(figsize=(12, 6))
-plt.plot(avg_position_per_year['year'], avg_position_per_year['position'], marker='o')
-plt.title('Average Finishing Position per Year for %s' % team_input)
-plt.xlabel('Year')
-plt.ylabel('Average Position')
-plt.gca().invert_yaxis()  # Invert y-axis so that lower positions are better
-plt.grid(True)
+sns.histplot(team_data['points_results'], bins=20, kde=True)
+plt.title('Distribution of %s in Races' % team_input)
+plt.xlabel('Points')
+plt.ylabel('Frequency')
 plt.show()
 
 st.divider()

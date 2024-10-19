@@ -119,7 +119,9 @@ ax2.legend(loc='upper right')
 
 st.pyplot(plt)
 
+result_by_year = lambda data, year, metric: avg = data.groupby(year)[metric].reset_index()
 
+result_by_year(team_input_standings_with_names,'year', 'position')
 
 st.divider()
 

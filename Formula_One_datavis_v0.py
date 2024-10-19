@@ -119,7 +119,7 @@ ax2.legend(loc='upper right')
 
 st.pyplot(plt)
 
-
+st.write(team_data.columns)
 result_by_year_lamda = lambda date,year,metric: data.groupby(year)[metric].mean().reset_index()
 
 #team_input_data = pd.merge(mclaren_construct, race_data, on=['raceId'])

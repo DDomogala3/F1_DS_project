@@ -11,7 +11,7 @@ st.title("Formula One Data Analysis: Coming July 2025")
 st.header("Performance and Driver Data Analysis of Your Choice")
 st.write("Code comes from this Kaggle site. https://www.kaggle.com/code/mansipanchal24/eda-on-f1-data-in-progress")
 df_cr = pd.read_csv('constructor_results.csv')
-#team_input = st.text_input("What team do you want to analyze?:")
+
 
 try:
     team_input = st.text_input("What team do you want to analyze:?")
@@ -25,9 +25,9 @@ else:
 st.write("Please note team names with two words have a '_' in the middle e.g. 'red_bull'")
 st.write("Let's look at %s team data" % team_input)
 df_cs = pd.read_csv('constructor_standings.csv')
-#st.dataframe(df_cs)                   
+)                   
 df_c = pd.read_csv('constructors.csv')
-#st.dataframe(df_c)
+
 race_data = pd.read_csv('races.csv')
 #st.dataframe(race_data)
 Haas_id = df_c[df_c['constructorRef'] == 'haas']['constructorId'].values[0]
@@ -119,7 +119,7 @@ ax2.legend(loc='upper right')
 
 st.pyplot(plt)
 
-st.write(team_data.columns)
+st.write(team_data.year)
 result_by_year_lamda = lambda date,year,metric: data.groupby(year)[metric].mean().reset_index()
 
 #team_input_data = pd.merge(mclaren_construct, race_data, on=['raceId'])

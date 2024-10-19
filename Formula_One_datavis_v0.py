@@ -25,7 +25,7 @@ else:
 st.write("Please note team names with two words have a '_' in the middle e.g. 'red_bull'")
 st.write("Let's look at %s team data" % team_input)
 df_cs = pd.read_csv('constructor_standings.csv')
-)                   
+                   
 df_c = pd.read_csv('constructors.csv')
 
 race_data = pd.read_csv('races.csv')

@@ -130,7 +130,7 @@ def result_by_year(data, year, metric):
 
 
 
-avg_positon_per_year = result_by_year_lambda(team_data,'year', 'position')
+avg_positon_per_year = result_by_year(team_data,'year', 'position')
 
 plt.figure(figsize=(12, 6))
 plt.plot(avg_position_per_year['year'], avg_position_per_year['position'], marker='o')

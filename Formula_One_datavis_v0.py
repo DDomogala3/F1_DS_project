@@ -55,8 +55,8 @@ df_cs_team_input = df_cs[df_cs['constructorId'] == team_id]
 team_input_construct = pd.merge(df_cr_team_input,df_cs_team_input, on=['raceId', 'constructorId'], suffixes=('_results', '_standings'))
 st.dataframe(team_input_construct)
 #st.dataframe(Haas_construct)
-#Haas_construct.head()
-Haas_data = pd.merge(Haas_construct, race_data, on=['raceId'])
+
+
 team_data = pd.merge(team_input_construct, race_data, on=['raceId'])
 
 team_input_correlation_matrix = team_data[['points_results', 'points_standings', 'position', 'wins']].corr()

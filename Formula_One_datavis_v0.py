@@ -119,7 +119,7 @@ ax2.legend(loc='upper right')
 
 st.pyplot(plt)
 
-st.write(team_data.year)
+
 result_by_year_lamda = lambda date,year,metric: data.groupby(year)[metric].mean().reset_index()
 
 #team_input_data = pd.merge(mclaren_construct, race_data, on=['raceId'])
@@ -130,7 +130,7 @@ def result_by_year(data, year, metric):
 
 
 
-avg_positon_per_year = result_by_year(team_data,'year', 'position')
+avg_positon_per_year = result_by_year(team_data,'year', 'points_results')
 
 plt.figure(figsize=(12, 6))
 plt.plot(avg_position_per_year['year'], avg_position_per_year['position'], marker='o')

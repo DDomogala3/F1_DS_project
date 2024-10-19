@@ -51,7 +51,7 @@ df_cs_haas = df_cs[df_cs['constructorId'] == Haas_id]
 #df_cs_haas
 df_cs_team_input = df_cs[df_cs['constructorId'] == team_id]
 
-Haas_construct = pd.merge(df_cr_haas, df_cs_haas, on=['raceId', 'constructorId'], suffixes=('_results', '_standings'))
+
 team_input_construct = pd.merge(df_cr_team_input,df_cs_team_input, on=['raceId', 'constructorId'], suffixes=('_results', '_standings'))
 st.dataframe(team_input_construct)
 #st.dataframe(Haas_construct)
@@ -118,9 +118,11 @@ ax1.legend(loc='upper left')
 ax2.legend(loc='upper right')
 
 st.pyplot(plt)
-#race_data = pd.read_csv('/formula-1-world-championship-1950-2020/races.csv')
+
 
 result_by_year_lamda = lambda date,year,metric: data.groupby(year)[metric].mean().reset_index()
+
+team_input_data = pd.merge(mclaren_construct, race_data, on=['raceId'])
 
 def result_by_year(data, year, metric):
     avg = data.groupby(year)[metric].mean().reset_index()
@@ -128,7 +130,7 @@ def result_by_year(data, year, metric):
 
 
 
-avg_positon_per_year = result_by_year(team_input_standings_with_names,'year', 'position')
+avg_positon_per_year = result_by_year_lambda(team_data,'year', 'position')
 
 plt.figure(figsize=(12, 6))
 plt.plot(avg_position_per_year['year'], avg_position_per_year['position'], marker='o')

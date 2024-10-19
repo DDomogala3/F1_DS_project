@@ -121,7 +121,19 @@ st.pyplot(plt)
 
 result_by_year = lambda data, year, metric: avg = data.groupby(year)[metric].reset_index()
 
-result_by_year(team_input_standings_with_names,'year', 'position')
+
+
+
+avg_positon_per_year = result_by_year(team_input_standings_with_names,'year', 'position')
+
+plt.figure(figsize=(12, 6))
+plt.plot(avg_position_per_year['year'], avg_position_per_year['position'], marker='o')
+plt.title('Average Finishing Position per Year for %s' % team_input)
+plt.xlabel('Year')
+plt.ylabel('Average Position')
+plt.gca().invert_yaxis()  # Invert y-axis so that lower positions are better
+plt.grid(True)
+plt.show()
 
 st.divider()
 

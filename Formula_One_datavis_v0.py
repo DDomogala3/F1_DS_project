@@ -137,7 +137,7 @@ sns.histplot(team_data['points_results'], bins=20, kde=True)
 plt.title('Distribution of %s in Races' % team_input)
 plt.xlabel('Points')
 plt.ylabel('Frequency')
-plt.show()
+st.pyplot(plt)
 
 st.divider()
 

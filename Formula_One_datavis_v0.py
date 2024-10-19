@@ -119,7 +119,7 @@ ax2.legend(loc='upper right')
 
 st.pyplot(plt)
 
-result_by_year = lambda data, year, metric: avg = data.groupby(year)[metric].reset_index()
+result_by_year = lambda data, year, metric: data.groupby(year)[metric].reset_index()
 
 
 

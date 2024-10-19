@@ -122,7 +122,7 @@ st.pyplot(plt)
 
 result_by_year_lamda = lambda date,year,metric: data.groupby(year)[metric].mean().reset_index()
 
-team_input_data = pd.merge(mclaren_construct, race_data, on=['raceId'])
+#team_input_data = pd.merge(mclaren_construct, race_data, on=['raceId'])
 
 def result_by_year(data, year, metric):
     avg = data.groupby(year)[metric].mean().reset_index()
